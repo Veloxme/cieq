@@ -1,0 +1,180 @@
+---
+import { siteData } from "../data/site";
+const { brand, contact, nav } = siteData;
+const currentYear = new Date().getFullYear();
+import { Image } from "astro:assets";
+import logo from "/src/assets/CIEQ.png";
+---
+
+<footer class='bg-gray-900 text-gray-300'>
+  <div class='container mx-auto px-4 lg:px-8 py-16'>
+    <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12'>
+      <!-- Brand column -->
+      <div class='lg:col-span-2'>
+        <div class='flex items-center space-x-3 mb-4'>
+          <Image
+            src={logo}
+            alt='logo CIEQ'
+            class='h-12 w-auto'
+          />
+          <div>
+            <span class='block text-xl font-bold text-white font-display'
+              >{brand.shortName}</span
+            >
+            <span class='block text-xs text-gray-400'>Equipo Hospitalario</span>
+          </div>
+        </div>
+        <p class='text-gray-400 mb-4 max-w-md leading-relaxed'>
+          {brand.legalName}
+        </p>
+        <p class='text-sm text-gray-500 max-w-md'>
+          Distribuimos equipo médico de alta calidad para hospitales, clínicas,
+          consultorios y profesionales de la salud en México.
+        </p>
+      </div>
+
+      <!-- Quick links -->
+      <div>
+        <h3 class='text-white font-bold mb-4 font-display'>Enlaces rápidos</h3>
+        <ul class='space-y-2'>
+          {
+            nav.slice(0, 5).map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  class='text-gray-400 hover:text-primary-400 transition-colors text-sm'>
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- Contact info -->
+      <div>
+        <h3 class='text-white font-bold mb-4 font-display'>Contacto</h3>
+        <ul class='space-y-3'>
+          <li class='flex items-start'>
+            <svg
+              class='w-5 h-5 text-primary-400 mr-2 flex-shrink-0 mt-0.5'
+              fill='none'
+              stroke='currentColor'
+              viewBox='0 0 24 24'>
+              <path
+                stroke-linecap='round'
+                stroke-linejoin='round'
+                stroke-width='2'
+                d='M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'
+              ></path>
+            </svg>
+            <a
+              href={`mailto:${contact.email}`}
+              class='text-gray-400 hover:text-primary-400 transition-colors text-sm'>
+              {contact.email}
+            </a>
+          </li>
+          <li class='flex items-start'>
+            <svg
+              class='w-5 h-5 text-primary-400 mr-2 flex-shrink-0 mt-0.5'
+              fill='none'
+              stroke='currentColor'
+              viewBox='0 0 24 24'>
+              <path
+                stroke-linecap='round'
+                stroke-linejoin='round'
+                stroke-width='2'
+                d='M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z'
+              ></path>
+              <path
+                stroke-linecap='round'
+                stroke-linejoin='round'
+                stroke-width='2'
+                d='M15 11a3 3 0 11-6 0 3 3 0 016 0z'
+              ></path>
+            </svg>
+            <span class='text-gray-400 text-sm leading-relaxed'>
+              {contact.address.street},<br />
+              {contact.address.colony}<br />
+              {contact.address.city}, {contact.address.state}<br />
+              C.P. {contact.address.postalCode}
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class='border-t border-gray-800 my-8'></div>
+
+    <!-- Bottom bar -->
+    <div class='flex flex-col md:flex-row items-center justify-between gap-4'>
+      <div class='text-sm text-gray-500 text-center md:text-left'>
+        &copy; {currentYear}
+        {brand.legalName}. Todos los derechos reservados.
+      </div>
+      <div class='flex items-center gap-6'>
+        <a
+          href='#'
+          class='text-sm text-gray-500 hover:text-primary-400 transition-colors'>
+          Aviso de Privacidad
+        </a>
+        <a
+          href='#'
+          class='text-sm text-gray-500 hover:text-primary-400 transition-colors'>
+          Términos y Condiciones
+        </a>
+      </div>
+    </div>
+
+    <!-- Made with badge -->
+    <div class='mt-8 text-center'>
+      <p class='text-xs text-gray-600'>
+        Hecho con <span class='text-red-500'>❤</span> en Mazatlán, Sinaloa
+      </p>
+    </div>
+  </div>
+
+  <!-- Scroll to top button -->
+  <button
+    id='scroll-to-top'
+    class='fixed bottom-8 right-8 w-12 h-12 bg-primary-600 hover:bg-primary-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 opacity-0 pointer-events-none flex items-center justify-center z-40'
+    aria-label='Volver arriba'>
+    <svg
+      class='w-6 h-6'
+      fill='none'
+      stroke='currentColor'
+      viewBox='0 0 24 24'>
+      <path
+        stroke-linecap='round'
+        stroke-linejoin='round'
+        stroke-width='2'
+        d='M5 10l7-7m0 0l7 7m-7-7v18'
+      ></path>
+    </svg>
+  </button>
+</footer>
+
+<script>
+  // Scroll to top button functionality
+  const scrollToTopButton = document.getElementById("scroll-to-top");
+
+  window.addEventListener("scroll", () => {
+    if (scrollToTopButton) {
+      if (window.pageYOffset > 300) {
+        scrollToTopButton.style.opacity = "1";
+        scrollToTopButton.style.pointerEvents = "auto";
+      } else {
+        scrollToTopButton.style.opacity = "0";
+        scrollToTopButton.style.pointerEvents = "none";
+      }
+    }
+  });
+
+  scrollToTopButton?.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
+</script>

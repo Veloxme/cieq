@@ -1,0 +1,135 @@
+---
+import { siteData } from "../data/site";
+const { hero, brand } = siteData;
+---
+
+<section
+  id='hero'
+  class='hero-section relative min-h-screen flex items-center justify-center overflow-hidden pt-20'>
+  <!-- Background image with overlay -->
+  <div class='absolute inset-0 z-0'>
+    <img
+      src='https://images.unsplash.com/photo-1648194030154-029d4f71bb32?w=1920&q=80'
+      alt='Equipo médico hospitalario moderno'
+      class='w-full h-full object-cover'
+      loading='eager'
+    />
+    <div
+      class='absolute inset-0 bg-gradient-to-br from-primary-900/90 via-primary-800/85 to-teal-900/90'>
+    </div>
+  </div>
+
+  <!-- Parallax background element -->
+  <div class='hero-parallax absolute inset-0 opacity-10 z-0'>
+    <div
+      class='absolute top-1/4 right-1/4 w-96 h-96 bg-white rounded-full blur-3xl'>
+    </div>
+    <div
+      class='absolute bottom-1/4 left-1/4 w-80 h-80 bg-teal-200 rounded-full blur-3xl'>
+    </div>
+  </div>
+
+  <!-- Medical cross pattern -->
+  <div class='absolute inset-0 opacity-[0.05] z-0'>
+    <div
+      class='absolute inset-0'
+      style='background-image: url(&apos;data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M30 22v8m0 0v8m0-8h-8m8 0h8" stroke="%23ffffff" stroke-width="2" fill="none" stroke-linecap="round"/%3E%3C/svg%3E&apos;);'>
+    </div>
+  </div>
+
+  <div class='container mx-auto px-4 lg:px-8 relative z-10'>
+    <div class='max-w-4xl mx-auto text-center'>
+      <!-- Badge -->
+      <div
+        class='inline-flex items-center px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full shadow-md mb-6 fade-in-delay'>
+        <div class='w-2 h-2 bg-success-500 rounded-full animate-pulse mr-2'>
+        </div>
+        <span class='text-sm font-medium text-gray-700'
+          >Atención en Mazatlán, Sinaloa</span
+        >
+      </div>
+
+      <!-- Main headline -->
+      <h1
+        class='text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight font-display fade-in-delay drop-shadow-lg'>
+        {hero.headline}
+      </h1>
+
+      <!-- Subheadline -->
+      <p
+        class='text-lg md:text-xl text-white/90 mb-10 max-w-3xl mx-auto leading-relaxed fade-in-delay drop-shadow-md'>
+        {hero.subheadline}
+      </p>
+
+      <!-- CTAs -->
+      <div
+        class='flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 fade-in-delay'>
+        <a
+          href='#contact'
+          class='group inline-flex items-center px-8 py-4 bg-white hover:bg-gray-50 text-primary-600 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105'>
+          {hero.primaryCTA}
+          <svg
+            class='ml-2 w-5 h-5 transition-transform group-hover:translate-x-1'
+            fill='none'
+            stroke='currentColor'
+            viewBox='0 0 24 24'>
+            <path
+              stroke-linecap='round'
+              stroke-linejoin='round'
+              stroke-width='2'
+              d='M13 7l5 5m0 0l-5 5m5-5H6'
+            ></path>
+          </svg>
+        </a>
+        <a
+          href='#categories'
+          class='inline-flex items-center px-8 py-4 bg-transparent hover:bg-white/10 text-white text-lg font-semibold rounded-xl shadow-md hover:shadow-lg border-2 border-white/50 hover:border-white transition-all duration-300 backdrop-blur-sm'>
+          {hero.secondaryCTA}
+        </a>
+      </div>
+
+      <!-- Stats / Trust indicators -->
+      <div
+        class='grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto fade-in-delay'>
+        <div class='text-center bg-white/10 backdrop-blur-md rounded-xl p-4'>
+          <div class='text-3xl font-bold text-white mb-1'>100+</div>
+          <div class='text-sm text-white/80'>Productos</div>
+        </div>
+        <div class='text-center bg-white/10 backdrop-blur-md rounded-xl p-4'>
+          <div class='text-3xl font-bold text-white mb-1'>24h</div>
+          <div class='text-sm text-white/80'>Respuesta</div>
+        </div>
+        <div class='text-center bg-white/10 backdrop-blur-md rounded-xl p-4'>
+          <div class='text-3xl font-bold text-white mb-1'>50+</div>
+          <div class='text-sm text-white/80'>Clientes</div>
+        </div>
+        <div class='text-center bg-white/10 backdrop-blur-md rounded-xl p-4'>
+          <div class='text-3xl font-bold text-white mb-1'>5★</div>
+          <div class='text-sm text-white/80'>Calificación</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div
+    class='absolute bottom-8 left-1/2 transform -translate-x-1/2 fade-in-delay'>
+    <a
+      href='#trust'
+      class='flex flex-col items-center text-white/80 hover:text-white transition-colors group'>
+      <span class='text-sm font-medium mb-2'>Conoce más</span>
+      <svg
+        class='w-6 h-6 animate-bounce'
+        fill='none'
+        stroke='currentColor'
+        viewBox='0 0 24 24'>
+        <path
+          stroke-linecap='round'
+          stroke-linejoin='round'
+          stroke-width='2'
+          d='M19 14l-7 7m0 0l-7-7m7 7V3'
+        ></path>
+      </svg>
+    </a>
+  </div>
+</section>

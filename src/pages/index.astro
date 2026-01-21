@@ -1,0 +1,231 @@
+---
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import TrustBar from "../components/TrustBar.astro";
+import Solutions from "../components/Solutions.astro";
+import Categories from "../components/Categories.astro";
+import Industries from "../components/Industries.astro";
+import Process from "../components/Process.astro";
+import Testimonials from "../components/Testimonials.astro";
+import FAQ from "../components/FAQ.astro";
+import ContactCTA from "../components/ContactCTA.astro";
+import Footer from "../components/Footer.astro";
+import { siteData } from "../data/site";
+
+const { brand, hero } = siteData;
+
+const title = `${brand.name} | ${brand.tagline}`;
+const description = hero.subheadline;
+const url = "https://cieq.com"; // Reemplazar con el dominio real
+const image = `${url}/og-image.jpg`; // Agregar imagen Open Graph
+---
+
+<!doctype html>
+<html lang='es'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta
+      name='viewport'
+      content='width=device-width, initial-scale=1.0'
+    />
+    <link
+      rel='icon'
+      type='image/svg+xml'
+      href='/favicon.svg'
+    />
+
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta
+      name='title'
+      content={title}
+    />
+    <meta
+      name='description'
+      content={description}
+    />
+    <meta
+      name='keywords'
+      content='equipo médico, equipo hospitalario, instrumental médico, mobiliario hospitalario, consumibles médicos, Mazatlán, Sinaloa, México'
+    />
+    <meta
+      name='author'
+      content={brand.legalName}
+    />
+
+    <!-- Open Graph / Facebook -->
+    <meta
+      property='og:type'
+      content='website'
+    />
+    <meta
+      property='og:url'
+      content={url}
+    />
+    <meta
+      property='og:title'
+      content={title}
+    />
+    <meta
+      property='og:description'
+      content={description}
+    />
+    <meta
+      property='og:image'
+      content={image}
+    />
+    <meta
+      property='og:site_name'
+      content={brand.shortName}
+    />
+    <meta
+      property='og:locale'
+      content='es_MX'
+    />
+
+    <!-- Twitter -->
+    <meta
+      property='twitter:card'
+      content='summary_large_image'
+    />
+    <meta
+      property='twitter:url'
+      content={url}
+    />
+    <meta
+      property='twitter:title'
+      content={title}
+    />
+    <meta
+      property='twitter:description'
+      content={description}
+    />
+    <meta
+      property='twitter:image'
+      content={image}
+    />
+
+    <!-- Additional Meta -->
+    <meta
+      name='robots'
+      content='index, follow'
+    />
+    <meta
+      name='language'
+      content='Spanish'
+    />
+    <meta
+      name='revisit-after'
+      content='7 days'
+    />
+
+    <!-- Google Fonts -->
+    <link
+      rel='preconnect'
+      href='https://fonts.googleapis.com'
+    />
+    <link
+      rel='preconnect'
+      href='https://fonts.gstatic.com'
+      crossorigin
+    />
+    <link
+      href='https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap'
+      rel='stylesheet'
+    />
+
+    <meta
+      name='generator'
+      content={Astro.generator}
+    />
+  </head>
+  <body class='font-sans antialiased bg-white text-gray-900'>
+    <!-- Header -->
+    <Header />
+
+    <!-- Main content -->
+    <main>
+      <Hero />
+      <TrustBar />
+      <Solutions />
+      <Categories />
+      <Industries />
+      <Process />
+      <Testimonials />
+      <FAQ />
+      <ContactCTA />
+    </main>
+
+    <!-- Footer -->
+    <Footer />
+
+    <!-- Scroll animations script -->
+    <script>
+      import "../scripts/scroll-animations";
+    </script>
+
+    <style is:global>
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: #1890ff;
+        border-radius: 5px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: #096dd9;
+      }
+
+      /* Smooth scroll behavior */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Focus visible styles for accessibility */
+      *:focus-visible {
+        outline: 2px solid #1890ff;
+        outline-offset: 2px;
+      }
+
+      /* Remove focus outline for mouse users */
+      *:focus:not(:focus-visible) {
+        outline: none;
+      }
+
+      /* Prevent layout shift from scrollbar */
+      html {
+        overflow-y: scroll;
+      }
+
+      /* Optimize font rendering */
+      body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+      }
+
+      /* Ensure images don't overflow */
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      /* Loading animation for images */
+      img[loading="lazy"] {
+        opacity: 1;
+        transition: opacity 0.3s;
+      }
+
+      img[loading="lazy"].loaded {
+        opacity: 1;
+      }
+    </style>
+  </body>
+</html>

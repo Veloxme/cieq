@@ -1,0 +1,133 @@
+---
+import { siteData } from '../data/site';
+const { faq } = siteData;
+---
+
+<section id="faq" class="py-20 bg-white reveal">
+  <div class="container mx-auto px-4 lg:px-8">
+    <!-- Section header -->
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="inline-block px-4 py-2 bg-primary-100 text-primary-700 text-sm font-semibold rounded-full mb-4">
+        Preguntas frecuentes
+      </span>
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-display">
+        ¿Tienes dudas?
+      </h2>
+      <p class="text-lg text-gray-600">
+        Aquí respondemos las preguntas más comunes sobre nuestros servicios.
+      </p>
+    </div>
+
+    <!-- FAQ Accordion -->
+    <div class="max-w-3xl mx-auto space-y-4">
+      {faq.map((item, index) => (
+        <div class="bg-gray-50 rounded-xl border border-gray-200 overflow-hidden transition-all duration-300 hover:border-primary-200">
+          <button
+            class="faq-button w-full flex items-center justify-between p-6 text-left transition-colors hover:bg-gray-100"
+            aria-expanded="false"
+            aria-controls={`faq-answer-${index}`}
+            id={`faq-question-${index}`}
+          >
+            <span class="text-lg font-semibold text-gray-900 pr-8 font-display">
+              {item.question}
+            </span>
+            <svg 
+              class="faq-icon w-6 h-6 text-primary-600 flex-shrink-0 transition-transform duration-300"
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div
+            class="faq-answer overflow-hidden transition-all duration-300 max-h-0"
+            id={`faq-answer-${index}`}
+            aria-labelledby={`faq-question-${index}`}
+            role="region"
+          >
+            <div class="p-6 pt-0 text-gray-700 leading-relaxed">
+              {item.answer}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Contact CTA -->
+    <div class="mt-12 text-center">
+      <p class="text-gray-600 mb-4">
+        ¿No encontraste tu respuesta?
+      </p>
+      <a 
+        href="#contact"
+        class="inline-flex items-center text-primary-600 hover:text-primary-700 font-semibold transition-colors group"
+      >
+        Contáctanos directamente
+        <svg class="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  // FAQ Accordion functionality
+  const faqButtons = document.querySelectorAll('.faq-button');
+  
+  faqButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const answer = button.nextElementSibling as HTMLElement;
+      const icon = button.querySelector('.faq-icon');
+      const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+      // Close all other FAQs
+      faqButtons.forEach((otherButton) => {
+        if (otherButton !== button) {
+          const otherAnswer = otherButton.nextElementSibling as HTMLElement;
+          const otherIcon = otherButton.querySelector('.faq-icon');
+          otherButton.setAttribute('aria-expanded', 'false');
+          if (otherAnswer) otherAnswer.style.maxHeight = '0';
+          if (otherIcon) otherIcon.style.transform = 'rotate(0deg)';
+        }
+      });
+
+      // Toggle current FAQ
+      if (isExpanded) {
+        button.setAttribute('aria-expanded', 'false');
+        if (answer) answer.style.maxHeight = '0';
+        if (icon) icon.style.transform = 'rotate(0deg)';
+      } else {
+        button.setAttribute('aria-expanded', 'true');
+        if (answer) answer.style.maxHeight = answer.scrollHeight + 'px';
+        if (icon) icon.style.transform = 'rotate(180deg)';
+      }
+    });
+  });
+
+  // Open first FAQ by default
+  if (faqButtons.length > 0) {
+    const firstButton = faqButtons[0];
+    const firstAnswer = firstButton.nextElementSibling as HTMLElement;
+    const firstIcon = firstButton.querySelector('.faq-icon');
+    
+    firstButton.setAttribute('aria-expanded', 'true');
+    if (firstAnswer) firstAnswer.style.maxHeight = firstAnswer.scrollHeight + 'px';
+    if (firstIcon) firstIcon.style.transform = 'rotate(180deg)';
+  }
+
+  // Keyboard navigation
+  faqButtons.forEach((button, index) => {
+    button.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown' && index < faqButtons.length - 1) {
+        e.preventDefault();
+        (faqButtons[index + 1] as HTMLElement).focus();
+      }
+      if (e.key === 'ArrowUp' && index > 0) {
+        e.preventDefault();
+        (faqButtons[index - 1] as HTMLElement).focus();
+      }
+    });
+  });
+</script>

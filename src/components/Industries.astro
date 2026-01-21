@@ -1,0 +1,86 @@
+---
+import { siteData } from '../data/site';
+const { industries } = siteData;
+---
+
+<section id="industries" class="py-20 bg-gradient-to-b from-gray-50 to-white reveal">
+  <div class="container mx-auto px-4 lg:px-8">
+    <!-- Section header -->
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="inline-block px-4 py-2 bg-success-100 text-success-700 text-sm font-semibold rounded-full mb-4">
+        Sectores que atendemos
+      </span>
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-display">
+        Soluciones para todo el sector salud
+      </h2>
+      <p class="text-lg text-gray-600">
+        Desde grandes hospitales hasta consultorios independientes, atendemos las necesidades de todo tipo de instituciones y profesionales.
+      </p>
+    </div>
+
+    <!-- Industries grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-container">
+      {industries.map((industry) => (
+        <div class="group bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-teal-200">
+          <!-- Icon -->
+          <div class="w-12 h-12 rounded-xl bg-teal-50 group-hover:bg-teal-100 flex items-center justify-center mb-4 transition-colors">
+            {industry.icon === 'hospital' && (
+              <svg class="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+              </svg>
+            )}
+            {industry.icon === 'clinic' && (
+              <svg class="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+            )}
+            {industry.icon === 'office' && (
+              <svg class="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            )}
+            {industry.icon === 'lab' && (
+              <svg class="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+              </svg>
+            )}
+            {industry.icon === 'doctor' && (
+              <svg class="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            )}
+            {industry.icon === 'education' && (
+              <svg class="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
+            )}
+          </div>
+
+          <!-- Content -->
+          <h3 class="text-lg font-bold text-gray-900 mb-2 font-display group-hover:text-teal-600 transition-colors">
+            {industry.title}
+          </h3>
+          <p class="text-sm text-gray-600 leading-relaxed">
+            {industry.description}
+          </p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Additional info -->
+    <div class="mt-16 bg-gradient-to-r from-teal-50 to-primary-50 rounded-2xl p-8 md:p-12 text-center">
+      <h3 class="text-2xl font-bold text-gray-900 mb-4 font-display">
+        ¿Instituciones públicas?
+      </h3>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-6">
+        Tenemos experiencia en procesos de licitación y podemos adaptarnos a los requisitos administrativos de instituciones gubernamentales del sector salud.
+      </p>
+      <a 
+        href="#contact"
+        class="inline-flex items-center px-8 py-4 bg-teal-600 hover:bg-teal-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+      >
+        Información para instituciones públicas
+      </a>
+    </div>
+  </div>
+</section>

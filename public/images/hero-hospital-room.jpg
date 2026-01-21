@@ -1,0 +1,35 @@
+<svg width="1920" height="1080" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1890ff;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#096dd9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#13c2c2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  
+  <!-- Medical cross pattern -->
+  <g opacity="0.1">
+    <g id="cross">
+      <rect x="945" y="490" width="30" height="100" fill="white" rx="5"/>
+      <rect x="920" y="515" width="80" height="30" fill="white" rx="5"/>
+    </g>
+    <use href="#cross" x="-200" y="-150"/>
+    <use href="#cross" x="200" y="-150"/>
+    <use href="#cross" x="-200" y="150"/>
+    <use href="#cross" x="200" y="150"/>
+  </g>
+  
+  <!-- Center text -->
+  <text x="960" y="480" font-family="Arial, sans-serif" font-size="48" fill="white" text-anchor="middle" font-weight="bold">
+    CIEQ
+  </text>
+  <text x="960" y="540" font-family="Arial, sans-serif" font-size="24" fill="white" text-anchor="middle" opacity="0.9">
+    Equipo Médico Hospitalario
+  </text>
+  <text x="960" y="600" font-family="Arial, sans-serif" font-size="16" fill="white" text-anchor="middle" opacity="0.7">
+    Placeholder - Descarga imágenes reales de Unsplash
+  </text>
+</svg>
